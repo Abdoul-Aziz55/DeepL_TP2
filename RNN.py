@@ -5,10 +5,11 @@ import torch.nn as nn
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
+from time import time
 
 dn = 50.
 h=20
-nepochs=100
+nepochs=300
 
 with open("meteo/2019.csv","r") as f: ls=f.readlines()
 trainx = torch.Tensor([float(l.split(',')[1])/dn for l in ls[:-7]]).view(1,-1,1)
@@ -82,7 +83,11 @@ def train(mod):
 
 mod=Mod(h)
 print("nparms",sum(p.numel() for p in mod.parameters() if p.requires_grad),file=sys.stderr)
+start = time()
+
 epochVector,trainLossVector, testLossVector = train(mod)
+
+print('training time', time()-start)
 
 plt.plot(epochVector, trainLossVector, label="Train Loss")
 plt.plot(epochVector, testLossVector, label="Test Loss")
