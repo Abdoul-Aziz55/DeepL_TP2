@@ -46,24 +46,37 @@ et un stride de 1 avec une fonction d'activation de type ReLU.
 
 ### Comparaison
 
-L'état de l'art montre que le modèle RNN est plus capable de traiter les problèmes dont les données sont séquentielles. Le CNN, quand à lui, est plus performant au niveau des données spatiales (les images).
+L'état de l'art montre que le modèle RNN est plus capable de traiter les problèmes dont les données sont séquentielles. 
+Le CNN, quand à lui, est plus performant au niveau des données spatiales (les images).
 
-1- Par rapport au temps :
+#### Quelques points de comparaison
 
-On remarque que l'entrainement du RNN prend plus du temps par rapport à celui du CNN; [ par exemple le modèle CNN est entrainé pour une durée de 1.44 secondes alors que le RNN prenait jusqu'à 122 secondes.]
+- Par rapport à la durée :
 
-2- Par rapport à test loss :
+On remarque que l'entrainement du RNN prend plus du temps par rapport à celui du CNN;
+En effet, l'entrainement du modèle CNN a duré en moyenne moins d'une demi seconde alors que celui du RNN 
+durait jusqu'à 12 secondes. 
 
-Après avoir lancer pas mal de fois le code de CNN et celui de RNN; on remarque qu'avec le CNN on aboutit souvent à une valeur minimale de test loss inférieure à la valeur finale de test loss du RNN.
-Avec le nombre d'époques (300) qu'on a utilisé on remarque également que pour le CNN , la test loss continue de diminuer alors que dans le cas du RNN , la courbe se stabilise au bout de 200 époques.
+L'entraînement du modèle CNN est 6 fois plus rapide en moyenne.
 
-3-Les courbes Test Loss & Train Loss :
+- Par rapport au test loss :
+
+Après avoir lancé plusieurs fois l'entrainement des deux modèles, on remarque qu'avec le CNN on aboutit souvent à une valeur minimale de test loss inférieure à la valeur finale de test loss du RNN.
+Avec 300 comme nombre d'epochs, on remarque également que pour le CNN, la test loss continue à diminuer après ces 300 epochs
+alors que dans le cas du RNN , la courbe se stabilise au bout de 200 epochs.
+
+### Difficulté(s)
 
 Parfois, en lancant l'entrainement du modèle de CNN , on avait comme résultat :
+
 ![image](CNN_debut.png)
 
-Ce qui veut dire que le modèle n'apprenait presque rien. En relancant le code , on aboutit à des meilleurs résultats (voir l'image d'avant).
+Ce qui veut dire que le modèle n'apprenait presque rien. En relancant l'apprentissage , on aboutit à des meilleurs résultats (voir l'image d'avant).
 
-Alors qu'avec le RNN, on n'a pas eu ce cas.
+Ce comportement est peut-être dû à une erreur dans la conception du modèle, ou à phénomène que nous ignorons. 
+En lisant un peu sur internet, certains disent que ce type de comportement arrive des fois lorsqu'on rencontre des phénomènes
+de marche aléatoire (_random walk_) ou lorsqu'on a pas assez de couches. Ce qu'on trouve bizarre c'est que ça n'arrive que peu souvent.
+
+Nous n'avons pas réussi à trouver d'explication de ce qui provoque ce comportement.
 
 ## Conclusion de l'étude
