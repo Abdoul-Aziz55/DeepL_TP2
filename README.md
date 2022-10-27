@@ -46,7 +46,7 @@ et un stride de 1 avec une fonction d'activation de type ReLU.
 
 ### Comparaison
 
-L'état de l'art montre que le modèle RNN est plus capable de traiter les problèmes dont les données sont séquentielles. 
+L'état de l'art montre que le modèle RNN est plus capable de traiter les problèmes dont les données sont séquentielles.
 Le CNN, quand à lui, est plus performant au niveau des données spatiales (les images).
 
 #### Quelques points de comparaison
@@ -54,8 +54,8 @@ Le CNN, quand à lui, est plus performant au niveau des données spatiales (les 
 - Par rapport à la durée :
 
 On remarque que l'entrainement du RNN prend plus du temps par rapport à celui du CNN;
-En effet, l'entrainement du modèle CNN a duré en moyenne moins d'une demi seconde alors que celui du RNN 
-durait jusqu'à 12 secondes. 
+En effet, l'entrainement du modèle CNN a duré en moyenne moins d'une demi seconde alors que celui du RNN
+durait jusqu'à 12 secondes.
 
 L'entraînement du modèle CNN est 6 fois plus rapide en moyenne.
 
@@ -73,10 +73,20 @@ Parfois, en lancant l'entrainement du modèle de CNN , on avait comme résultat 
 
 Ce qui veut dire que le modèle n'apprenait presque rien. En relancant l'apprentissage , on aboutit à des meilleurs résultats (voir l'image d'avant).
 
-Ce comportement est peut-être dû à une erreur dans la conception du modèle, ou à phénomène que nous ignorons. 
+Ce comportement est peut-être dû à une erreur dans la conception du modèle, ou à phénomène que nous ignorons.
 En lisant un peu sur internet, certains disent que ce type de comportement arrive des fois lorsqu'on rencontre des phénomènes
 de marche aléatoire (_random walk_) ou lorsqu'on a pas assez de couches. Ce qu'on trouve bizarre c'est que ça n'arrive que peu souvent.
 
 Nous n'avons pas réussi à trouver d'explication de ce qui provoque ce comportement.
 
 ## Conclusion de l'étude
+
+Ce TP nous a permis premièrement de revoir les notions du cours des modèles RNN et CNN et d'étudier leurs architectures et leurs différences.
+
+Deuxièment, pour l'implémentation on s'est basé sur la documentation de Pytorch et sur les codes fournis en cours. C'était une occasion pour nous familiariser encore plus avec Pytorch.
+
+Finalement, pour la comparaison on s'est basé principalement sur les courbes des Loss. Les deux modèles semblent correctes; parce que déja on n'a pas eu un cas d'overfitting ni d'underfitting , a part le souci qu'on eu avec le CNN ( mentionné auparavant), et parce que pour les deux modèles la loss décroit jusqu'à des valeurs minimales.
+
+Après avoir chercher sur les performances des modèles dur les données séquentielle, on a appris qu'il existe un modèle plus performant que le RNN qui est le LSTM . En effet, les réseaux de longue mémoire à court terme (LSTM) sont une extension pour les réseaux neuronaux récurrents (RNN), qui étend leur mémoire. Par conséquent, il est bien adapté pour apprendre des expériences importantes qui ont des retards très longs entre les deux. D'ailleurs, les LSTM permettent aux RNN de se souvenir de leurs intrants sur une longue période de temps.
+
+Dans le cadre de ce tp, nous avons pas implémenter le modèle LSTM mais on a appris à faire la différence entre RNN, CNN et LSTM ainsi qu'on a essayé de comparer entre les deux premiers modèles.
