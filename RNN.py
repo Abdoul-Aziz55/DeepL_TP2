@@ -81,11 +81,14 @@ def train(mod):
     print("fin",totloss,testloss,file=sys.stderr)
     return (epochVector, trainLossVector, testLossVector)
 
+
+
 mod=Mod(h)
 print("nparms",sum(p.numel() for p in mod.parameters() if p.requires_grad),file=sys.stderr)
 start = time()
 
 epochVector,trainLossVector, testLossVector = train(mod)
+
 
 print('training time', time()-start)
 
